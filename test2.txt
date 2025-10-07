@@ -1,0 +1,43 @@
+
+
+################################################################
+This is a TEST of SHA-256:
+
+It contains:
+- Uppercase and lowercase letters
+- Numbers: 0123456789
+- Punctuation: . , ; : ' " ! ? ( ) [ ] { } - _ —
+- Symbols: @ # $ % ^ & * ~ ` | \ / < > +=
+- Accented characters: àèéìòùçñß
+- Emoji: 😉🙈🥸🥾👳
+
+
+ 1  Nel mezzo del cammin di nostra vita
+ 2      mi ritrovai per una selva oscura
+ 3      ché la diritta via era smarrita.
+ 4          Ahi quanto a dir qual era è cosa dura
+ 5          esta selva selvaggia e aspra e forte
+ 6          che nel pensier rinova la paura!
+ 7          Tant’è amara che poco è più morte;
+ 8      ma per trattar del ben ch’i’ vi trovai,
+ 9      dirò de l’altre cose ch’i’ v’ho scorte.
+10          Io non so ben ridir com’i’ v’intrai,
+11          tant’era pien di sonno a quel punto
+12          che la verace via abbandonai.
+13      Ma poi ch’i’ fui al piè d’un colle giunto,
+14      là dove terminava quella valle
+15      che m’avea di paura il cor compunto,
+16          guardai in alto, e vidi le sue spalle
+17          vestite già de’ raggi del pianeta
+18          che mena dritto altrui per ogne calle.
+19      Allor fu la paura un poco queta
+20      che nel lago del cor m’era durata
+21      la notte ch’i’ passai con tanta pieta.
+22          E come quei che con lena affannata
+23          uscito fuor del pelago a la riva
+24          si volge a l’acqua perigliosa e guata,
+25      così l’animo mio, ch’ancor fuggiva,
+26      si volse a retro a rimirar lo passo
+27      che non lasciò già mai persona viva.
+
+################################################################

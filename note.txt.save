@@ -1,0 +1,8 @@
+quando client invia messaggio stampa "richiesta inviata"
+server stampa "richiesta ricevuta"
+server stampa"invio messaggio"
+client stampa messaggio
+client stampa messaggio ricevutio
+client chiude tuutto
+server scrive messaggio inviato
+server scrive che attende altr
