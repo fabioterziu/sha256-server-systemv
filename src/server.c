@@ -14,9 +14,9 @@
 
 //DICHIARAZIONI GLOBALI
 int qid = -1;                    //id coda
-int shmflg = IPC_CREAT | 0666;
-size_t Serverpath_len = 0;         // Dimensione del path
-struct msgStruct strutturamsg;     //struttura per il messaggio
+int shmflg = IPC_CREAT | 0666;   //se non esiste segmento con la chiave specificata, crealo
+size_t Serverpath_len = 0;       //dimensione del path
+struct msgStruct strutturamsg;   //struttura per il messaggio
 //struct shmemStruct structmem;         //popola struttura per la memoria condivisa
 
 
@@ -32,11 +32,11 @@ void signTermHandler(int sig);                               //segnali
 int main(int argc, char *argv[]) {
 
     // GESTIONE SEGNALI
-    if (signal(SIGTERM, signTermHandler) == SIG_ERR)
+    if (signal(SIGTERM, signTermHandler) == SIG_ERR) //termina in kodo ordinato
         errExit("change SIGTERM handler failed");
-    if (signal(SIGINT, signTermHandler) == SIG_ERR)
+    if (signal(SIGINT, signTermHandler) == SIG_ERR) //interrupt
         errExit("change SIGINT handler failed");
-    if (signal(SIGHUP, signTermHandler) == SIG_ERR)
+    if (signal(SIGHUP, signTermHandler) == SIG_ERR) //ricarica il processo
         errExit("change SIGHUP handler failed");
 
 
@@ -49,7 +49,8 @@ int main(int argc, char *argv[]) {
     int shmid = shared_mem(key, sizeof(struct shmemStruct), shmflg);         //crea memoria condivisa. ritorna id mem
     void *sh_mem = shmat(shmid, NULL, 0);                                    //collega memoria condivisa
     if (sh_mem == (void *) -1)
-        errExit("<SERVER> shmat failed");
+        errExit("<SERVER> shmat failed"); //shared mem attach fallita
+
 
     while (1) {
         size_t msgSize = sizeof(struct msgStruct) - sizeof(long);        //dimensione messaggio
@@ -57,7 +58,7 @@ int main(int argc, char *argv[]) {
         //MESSAGGI CONNESSIONE
         if (msgrcv(qid, &strutturamsg, msgSize, 1, 0) == -1)
             errExit("<SERVER> msgrcv failed");
-        printf("<SERVER> Connection request recived from: %s\n", strutturamsg.text);
+        printf("<SERVER> Connection request recived from CLIENT%d\n", strutturamsg.client_pid);
 
         strutturamsg.mtype = 2;                                         //tipo 2                
         strncpy(strutturamsg.text, "ACK", SIMPLEMSG_SIZE - 1);          //messaggio DA INVIARE

@@ -33,17 +33,21 @@ int main (int argc, char *argv[]) {
     }
     char *fName = argv[1];                                    //nome file
 
+    //PID CLIENT
+    pid_t my_pid = getpid();                           //ottengo pid client
+
     //PATH
     char *abs = getPath(fName);                         //calcolo path assoluto del file
     printf("%s\n", abs);                                //STAMPA DI DEBUG
-    free(abs);                                          //libero memoria
+    
 
     key_t key = generateKey("generate.keyfile", 71);       //genera chiave
     int qid = queue_id(key);                               //idenfificatore coda
 
     //STRUTTURA MESSAGGIO
-    strutturamsg.mtype = 1;                                          //definisco struttura msg (client 1, server 2)                  
-    strncpy(strutturamsg.text, "CLIENT 1", SIMPLEMSG_SIZE - 1);////////messaggio DA INVIARE (indico chi sono)DA MODIFICARE, DIRÀ SEMPRE 1
+    strutturamsg.mtype = 1;                                          //definisco struttura msg (client 1, server 2) 
+    strutturamsg.client_pid = my_pid;                 
+    snprintf(strutturamsg.text, SIMPLEMSG_SIZE - 1, "CLIENT %d", my_pid);////////messaggio DA INVIARE (indico chi sono)DA MODIFICARE, DIRÀ SEMPRE 1
     size_t msgSize = sizeof(struct msgStruct) - sizeof(long);        //dimensione messaggio
 
     //MESSAGGI PRIMA CONNESSIONE
@@ -66,6 +70,8 @@ int main (int argc, char *argv[]) {
     printf("<CLIENT> PATH inviato.\n");
     shmdt(sh_mem);  // stacca la memoria condivisa dopo la scrittura
 
+
+    free(abs);                                          //libero memoria
     exit(0);
 
     //ricorda di chiudere coda memoria o quello che serve chiuder einsomma. in ogni funzione o punto di uscita!!!!!!!!!!!!!!!!!!!!!!!

@@ -9,6 +9,7 @@
 struct msgStruct {
     long mtype;                // Tipo del messaggio (richiesto da msgget/msgsnd/msgrcv)
     char text[SIMPLEMSG_SIZE];
+    pid_t client_pid;
 };
 
 void printMessage1(struct msgStruct *msg);

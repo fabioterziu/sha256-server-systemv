@@ -4,6 +4,7 @@
 #include <stdlib.h>     // per exit()
 #include <stdint.h>     // per uint8_t
 #include <openssl/sha.h> // per SHA256
+#include <errno.h>
 
 #include "sha256.h"
 
@@ -12,6 +13,7 @@
 
 void digest_file(const char *filename, uint8_t *hash){   //filename: nome del file da cui leggere i dati
 	                                                      //hash: un array di 32 byte dove scriverà il digest SHA-256 risultante
+
    SHA256_CTX ctx; //creazione contesto
    SHA256_Init(&ctx); //inizializzazione contesto
 
@@ -19,7 +21,7 @@ void digest_file(const char *filename, uint8_t *hash){   //filename: nome del fi
 
    int file = open(filename, O_RDONLY, 0); //apri il file solo in lettura
    if (file == -1){ //controlla se il file è stato aperto correttamente
-      printf("File %s does not exist\n", filename);
+      printf("Opening file %s error\n", filename);
       exit(1); //se il file non esiste, stampa un messaggio di errore e termina il programma
    }
 
