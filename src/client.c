@@ -24,8 +24,9 @@ int queue_id(key_t key);                                    //idenfificatore cod
 int shared_mem(key_t key, size_t size, int shmflg);         //cerca memoria condivisa
 void write_path(void *sh_mem, char *path);
 
-int main (int argc, char *argv[]) { 
 
+//MAIN
+int main (int argc, char *argv[]) { 
     //CONTROLLO ARGOMENTI
     if (argc != 2) {                                          //+ file                              
         printf("<CLIENT> Usage: %s file.txt\n", argv[0]);
@@ -34,20 +35,21 @@ int main (int argc, char *argv[]) {
     char *fName = argv[1];                                    //nome file
 
     //PID CLIENT
-    pid_t my_pid = getpid();                           //ottengo pid client
+    pid_t my_pid = getpid();                            //ottengo pid client
 
     //PATH
     char *abs = getPath(fName);                         //calcolo path assoluto del file
-    printf("%s\n", abs);                                //STAMPA DI DEBUG
+    printf("PATH -> %s\n", abs);                        //STAMPA DI DEBUG
     
 
     key_t key = generateKey("generate.keyfile", 71);       //genera chiave
     int qid = queue_id(key);                               //idenfificatore coda
 
+
     //STRUTTURA MESSAGGIO
     strutturamsg.mtype = 1;                                          //definisco struttura msg (client 1, server 2) 
     strutturamsg.client_pid = my_pid;                 
-    snprintf(strutturamsg.text, SIMPLEMSG_SIZE - 1, "CLIENT %d", my_pid);////////messaggio DA INVIARE (indico chi sono)DA MODIFICARE, DIRÀ SEMPRE 1
+    snprintf(strutturamsg.text, SIMPLEMSG_SIZE - 1, "CLIENT %d", my_pid);  //messaggio DA INVIARE
     size_t msgSize = sizeof(struct msgStruct) - sizeof(long);        //dimensione messaggio
 
     //MESSAGGI PRIMA CONNESSIONE
@@ -59,6 +61,7 @@ int main (int argc, char *argv[]) {
             errExit("<CLIENT> msgrcv failed");      
     printf("<CLIENT> Connection confirmed: %s\n", strutturamsg.text);       //confermo a video messaggio server ricevuto
 
+    
     //MEMORIA CONDIVISA
     int shmid = shared_mem(key, sizeof(struct shmemStruct), shmflg);    //cerca memoria condivisa, ritorna id memoria
     void *sh_mem = shmat(shmid, NULL, 0);                               //collega memoria condivisa
@@ -68,6 +71,7 @@ int main (int argc, char *argv[]) {
     //INVIO TRAMITE MEMORIA
     write_path(sh_mem, abs);  
     printf("<CLIENT> PATH inviato.\n");
+
     shmdt(sh_mem);  // stacca la memoria condivisa dopo la scrittura
 
 
@@ -76,6 +80,7 @@ int main (int argc, char *argv[]) {
 
     //ricorda di chiudere coda memoria o quello che serve chiuder einsomma. in ogni funzione o punto di uscita!!!!!!!!!!!!!!!!!!!!!!!
 }
+
 
 
 //RESTITUISCE PATH ASSOLUTO FILE 

@@ -38,4 +38,8 @@ clean:
 #			> ./client file.txt
 
 
-############################# DA AGGIUNGERE SHA256 e al !!!!!!!!!!!!!!!!!!!!! //TODO
+#todo:
+#FUZNIONA SOLO SU APPLE SILICON
+#aggiungere ricompilazione per .h
+#va bene sintassi POSIX?
+# DA AGGIUNGERE SHA256 e al !!!!!!!!!!!!!!!!!!!!! //TODO
