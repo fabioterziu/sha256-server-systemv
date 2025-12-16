@@ -1,6 +1,4 @@
-echo "*.o" > .gitignore
-echo "server" >> .gitignore
-echo "client" >> .gitignore
-echo ".DS_Store" >> .gitignore
-
-##>>append a .gitignore
+*.o
+server
+client
+.DS_Store
