@@ -8,9 +8,9 @@
 #include <unistd.h>     
 #include <limits.h>     
 #include "message.h"
-#include "sharedMemory.h"
-#include "errExit.h"
-#include "sha256.h" 
+#include "shared_memory.h"
+#include "error_exit.h"
+#include "sha_256.h" 
 
 
 //DICHIARAZIONI GLOBALI

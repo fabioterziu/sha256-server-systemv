@@ -1,5 +1,5 @@
-#ifndef SHA256_UTILS_H
-#define SHA256_UTILS_H
+#ifndef SHA_256_H
+#define SHA_256_H
 #include <stdint.h>     // per uint8_t
 
 // Funzione che calcola l'impronta SHA-256 di un file

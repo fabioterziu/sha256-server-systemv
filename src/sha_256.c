@@ -6,7 +6,7 @@
 #include <openssl/sha.h> // per SHA256
 #include <errno.h>
 
-#include "sha256.h"
+#include "sha_256.h"
 
 // x compilare
 // clang -o mio_programma main.c sha256.c -I/opt/homebrew/opt/openssl@3/include -L/opt/homebrew/opt/openssl@3/lib -lssl -lcrypto

@@ -1,5 +1,5 @@
-#ifndef SHAREDMEMORY_H      // per evitare inclusioni multiple (include guard)
-#define SHAREDMEMORY_H
+#ifndef SHARED_MEMORY_H //se non è definito
+#define SHARED_MEMORY_H //definisci ora
 
 #include <stdlib.h>
 #include <sys/types.h> 

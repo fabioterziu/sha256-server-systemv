@@ -2,7 +2,7 @@
 #include <errno.h> 
 #include <stdlib.h> 
 
-#include "errExit.h"
+#include "error_exit.h"
 
 void errExit(const char *msg) {
   fprintf(stderr, "%s\n", msg); //senza aggiunta messaggio errno

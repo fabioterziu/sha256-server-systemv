@@ -3,8 +3,8 @@ INCLUDES= -I./inc -I/opt/homebrew/opt/openssl/include
 LDFLAGS = -L/opt/homebrew/opt/openssl/lib
 LIBS = -lssl -lcrypto
 
-SERVER_SRCS=src/errExit.c src/server.c src/message.c src/sharedMemory.c src/sha256.c
-CLIENT_SRCS=src/errExit.c src/client.c src/message.c src/sharedMemory.c src/sha256.c
+SERVER_SRCS=src/error_exit.c src/server.c src/message.c src/shared_memory.c src/sha_256.c
+CLIENT_SRCS=src/error_exit.c src/client.c src/message.c src/shared_memory.c src/sha_256.c
 
 #file oggetto
 SERVER_OBJS=$(SERVER_SRCS:.c=.o)

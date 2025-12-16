@@ -8,9 +8,9 @@
 #include <unistd.h>
 
 #include "message.h"
-#include "errExit.h" 
-#include "sharedMemory.h"
-#include "sha256.h"
+#include "error_exit.h" 
+#include "shared_memory.h"
+#include "sha_256.h"
 
 //DICHIARAZIONI GLOBALI
 int qid = -1;                    //id coda

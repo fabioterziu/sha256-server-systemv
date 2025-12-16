@@ -3,4 +3,4 @@ echo "server" >> .gitignore
 echo "client" >> .gitignore
 echo ".DS_Store" >> .gitignore
 
-##>>append a .gotignore
+##>>append a .gitignore
